@@ -37,17 +37,30 @@ def convert_dictionary_to_list_of_dictionaries(dict_to_convert):
 
     return list_of_dict
 
+def sort_dict(dict_to_sort):
+    return dict_to_sort["char"]
 
-    
-def main():
-    book_path = "books/frankenstein.txt"
+def book_report(book_path):
     book_text = get_book_text(book_path)
     book_text_lower = to_lower_case(book_text)
     book_word_Count = count_each_word(book_text)
-    book_character_count = count_each_character(book_text_lower)
-    print(convert_dictionary_to_list_of_dictionaries(book_character_count))
+    book_character_count = convert_dictionary_to_list_of_dictionaries(count_each_character(book_text_lower))
+    book_character_count.sort(reverse=False, key=sort_dict)
+    print(f"---Begin report of {book_path}---\n\n{book_word_Count} found in the document\n\n")
     
+    for character in book_character_count:
+        print(f"The '{character['char']}' character was found {character['num']} times in the book")
     
+    print(f"\n---End report of {book_path}---")
+    
+
+
+    
+def main():
+    path = "books/frankenstein.txt"
+    book_report(path)
+    
+
     
     
 main()
