@@ -1,1 +1,1 @@
-BookBot is my first project!
+BookBot is a simple console line application that takes a text file as its input and produces an output that displays the word count of the text and file and a count of the number of characters found.
